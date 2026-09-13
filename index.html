@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Кенжеш — 50 жас мерейтойы</title>
+<meta name="description" content="10 қазан · 13:00 · Шаңырақ мейрамханасы, Астана. Кенжештің 50 жас мерейтойына арналған құпия кешке шақырамыз!">
+<meta property="og:title" content="Кенжеш · 50 жас — құпия шақыру">
+<meta property="og:description" content="10 қазан · 13:00 · Шаңырақ мейрамханасы, Астана">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#0d211c">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='31' fill='%230d211c'/%3E%3Ctext x='32' y='43' text-anchor='middle' font-family='Georgia,serif' font-size='30' fill='%23cfa95e'%3E50%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --night: #0d211c;
+    --emerald: #133a30;
+    --emerald-soft: #1d4a3e;
+    --gold: #cfa95e;
+    --gold-light: #efd9a3;
+    --gold-deep: #967336;
+    --cream: #f5eedf;
+    --paper: #efe6d2;
+    --ink: #1d3a32;
+    --ink-soft: #4f635c;
+    --serif: 'Cormorant Garamond', 'Times New Roman', serif;
+    --sans: 'Montserrat', 'Helvetica Neue', sans-serif;
+    --ease: cubic-bezier(.22,.61,.36,1);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    font-variant-numeric: lining-nums;
+    background: #07130f;
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+  }
+  body.locked { overflow: hidden; }
+
+  /* телефонная колонка; по центру на десктопе */
+  .page {
+    max-width: 430px;
+    margin: 0 auto;
+    background: var(--night);
+    box-shadow: 0 0 60px rgba(0,0,0,.5);
+    overflow: hidden;
+    position: relative;
+  }
+
+  /* зерно поверх тёмных секций */
+  .dark { position: relative; background: var(--night); color: var(--cream); isolation: isolate; }
+  .dark::after {
+    content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+    opacity: .09; mix-blend-mode: soft-light;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  .light { position: relative; background: var(--cream); color: var(--ink); }
+
+  .reveal {
+    opacity: 0; transform: translateY(22px);
+    transition: opacity 1s var(--ease), transform 1s var(--ease);
+  }
+  .reveal.is-in { opacity: 1; transform: none; }
+
+  .ornament { display: block; margin: 0 auto; overflow: visible; }
+
+  .kicker {
+    display: flex; align-items: center; justify-content: center; gap: .8rem;
+    font-size: .68rem; font-weight: 600; letter-spacing: .34em; text-indent: .34em;
+    text-transform: uppercase;
+  }
+  .kicker::before, .kicker::after { content: ''; height: 1px; width: 2.4rem; background: currentColor; opacity: .5; }
+
+  [class*="serif"], .fifty, .seal-num, .date-big, .venue, .cd-num, .time-row .t { font-feature-settings: 'lnum' 1; }
+
+  .serif-h {
+    font-family: var(--serif);
+    font-style: italic; font-weight: 500;
+    font-size: clamp(2.3rem, 10vw, 2.8rem);
+    line-height: 1.05;
+  }
+
+  .body-text {
+    font-size: .92rem; line-height: 1.8;
+    color: var(--ink-soft);
+  }
+  .dark .body-text { color: rgba(245,238,223,.78); }
+
+  .icon {
+    width: 1.5rem; height: 1.5rem;
+    fill: none; stroke: currentColor; stroke-width: 1.6;
+    stroke-linecap: round; stroke-linejoin: round;
+  }
+
+  /* ---------- ПЕЧАТЬ (вход) ---------- */
+  .seal-screen {
+    position: fixed; inset: 0; z-index: 50;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 1.8rem;
+    width: 100%; border: none; cursor: pointer;
+    background:
+      radial-gradient(120% 70% at 50% 45%, var(--emerald-soft) 0%, var(--night) 62%, #06110d 100%);
+    color: var(--gold);
+    font-family: var(--sans);
+    transition: opacity .9s var(--ease) .35s, visibility 0s linear 1.3s;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .seal-screen .kicker { color: var(--gold-light); }
+  .seal-screen .hint {
+    font-size: .7rem; letter-spacing: .28em; text-indent: .28em; text-transform: uppercase;
+    color: rgba(245,238,223,.6);
+    animation: breathe 2.4s ease-in-out infinite;
+  }
+  @keyframes breathe { 50% { opacity: .35; } }
+
+  .seal {
+    position: relative;
+    width: 9.5rem; height: 9.5rem; border-radius: 50%;
+    display: grid; place-items: center;
+    background:
+      radial-gradient(circle at 34% 28%, #f6e2ae 0%, var(--gold) 34%, var(--gold-deep) 78%, #6d5224 100%);
+    box-shadow:
+      0 18px 40px rgba(0,0,0,.55),
+      inset 0 -6px 14px rgba(0,0,0,.28),
+      inset 0 5px 10px rgba(255,255,255,.3);
+    transition: transform .8s var(--ease), opacity .6s ease;
+  }
+  .seal::before {
+    content: ''; position: absolute; inset: .55rem; border-radius: 50%;
+    border: 1.5px dashed rgba(70,50,18,.45);
+  }
+  .seal-num {
+    font-family: var(--serif); font-weight: 700;
+    font-size: 3.9rem; line-height: 1;
+    color: #5a431b;
+    text-shadow: 0 1px 0 rgba(255,240,200,.5);
+    margin-top: -.2rem;
+  }
+  .seal .ornament { position: absolute; bottom: 1.35rem; width: 2.6rem; color: #5a431b; }
+  .seal .ornament.top { top: 1.25rem; bottom: auto; transform: scaleY(-1); }
+  .seal-screen:hover .seal { transform: scale(1.04) rotate(-3deg); }
+
+  .seal-screen.open { opacity: 0; visibility: hidden; pointer-events: none; }
+  .seal-screen.open .seal { transform: scale(1.5) rotate(18deg); opacity: 0; }
+
+  /* ---------- HERO ---------- */
+  .hero {
+    min-height: 100svh;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center;
+    padding: 4.5rem 1.4rem 3.2rem;
+    background:
+      radial-gradient(90% 55% at 50% 52%, rgba(207,169,94,.2) 0%, rgba(207,169,94,0) 70%),
+      radial-gradient(140% 90% at 50% 0%, var(--emerald) 0%, var(--night) 70%);
+    overflow: hidden;
+  }
+  .hero .kicker { color: var(--gold-light); margin-bottom: 2.4rem; }
+  .hero .ornament { width: 5.6rem; color: var(--gold); margin-bottom: 1.1rem; }
+
+  .hero-name {
+    font-family: var(--serif); font-weight: 600;
+    font-size: clamp(2.1rem, 10vw, 2.7rem);
+    letter-spacing: .32em; text-indent: .32em;
+    color: var(--cream);
+  }
+
+  .fifty {
+    position: relative;
+    font-family: var(--serif); font-weight: 600;
+    font-size: clamp(10rem, 50vw, 13.5rem);
+    line-height: .82;
+    margin: .6rem 0 .2rem;
+    letter-spacing: -.02em;
+  }
+  .fifty .fill {
+    position: relative; z-index: 1;
+    background: linear-gradient(170deg, #fbecc4 0%, var(--gold-light) 22%, var(--gold) 52%, var(--gold-deep) 82%, #d8b56c 100%);
+    -webkit-background-clip: text; background-clip: text;
+    color: transparent;
+    filter: drop-shadow(0 10px 28px rgba(0,0,0,.45));
+  }
+  .fifty .echo {
+    position: absolute; inset: 0; z-index: 0;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(207,169,94,.45);
+    transform: translate(.6rem, .55rem);
+  }
+
+  .hero-jas {
+    font-size: .95rem; font-weight: 600;
+    letter-spacing: .6em; text-indent: .6em;
+    color: var(--gold);
+  }
+  .hero-sub {
+    font-family: var(--serif); font-style: italic;
+    font-size: 1.55rem; color: var(--cream); opacity: .9;
+    margin-top: 1.3rem;
+  }
+  .hero-date {
+    margin-top: 2.6rem;
+    display: flex; align-items: center; gap: .9rem;
+    font-size: .78rem; font-weight: 500; letter-spacing: .3em;
+    color: rgba(245,238,223,.75);
+  }
+  .hero-date i { width: 4px; height: 4px; background: var(--gold); transform: rotate(45deg); display: block; }
+
+  /* загрузочная хореография hero после открытия печати */
+  .hero .stage { opacity: 0; transform: translateY(18px); }
+  body.opened .hero .stage {
+    animation: rise 1.1s var(--ease) forwards;
+    animation-delay: calc(var(--d, 0) * 130ms + 500ms);
+  }
+  @keyframes rise { to { opacity: 1; transform: none; } }
+
+  .sparkle {
+    position: absolute; width: 3px; height: 3px; border-radius: 50%;
+    background: var(--gold-light);
+    box-shadow: 0 0 8px 2px rgba(239,217,163,.55);
+    opacity: 0; pointer-events: none;
+    animation: twinkle 4s ease-in-out infinite;
+  }
+  @keyframes twinkle { 0%, 100% { opacity: 0; transform: scale(.6); } 50% { opacity: .9; transform: scale(1); } }
+
+  /* винил-кнопка музыки */
+  .music {
+    position: absolute; top: 1.1rem; right: 1rem;
+    width: 3.6rem; height: 3.6rem;
+    border: none; background: none; cursor: pointer; padding: 0;
+    z-index: 4;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .music img {
+    width: 100%; height: 100%; display: block;
+    filter: drop-shadow(0 4px 10px rgba(0,0,0,.5));
+  }
+  .music::after {
+    content: ''; position: absolute; inset: -5px; border-radius: 50%;
+    border: 1px solid rgba(207,169,94,.55);
+  }
+  .music.playing img { animation: spin 3.5s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .music-label {
+    position: absolute; top: 1.55rem; right: 5.2rem; z-index: 4;
+    font-size: .6rem; letter-spacing: .2em; text-transform: uppercase;
+    color: rgba(245,238,223,.55);
+    pointer-events: none;
+  }
+
+  /* ---------- ШАҚЫРУ ---------- */
+  .invite {
+    text-align: center;
+    padding: 4.2rem 1.9rem 4rem;
+    background:
+      radial-gradient(80% 40% at 50% 0%, #fff9ec 0%, rgba(255,249,236,0) 70%),
+      var(--cream);
+  }
+  .invite .ornament { width: 4.4rem; color: var(--gold-deep); margin-bottom: 1.4rem; }
+  .invite .serif-h { color: var(--ink); margin-bottom: 1.6rem; }
+  .invite .body-text { max-width: 21rem; margin: 0 auto; }
+  .invite .name-line {
+    font-family: var(--serif); font-weight: 600;
+    font-size: clamp(1.9rem, 8.4vw, 2.3rem);
+    color: var(--ink);
+    line-height: 1.15;
+    margin: 1.1rem 0 .7rem;
+  }
+  .invite .name-line em { font-style: italic; font-weight: 500; color: var(--gold-deep); }
+
+  /* ---------- СЮРПРИЗ ---------- */
+  .secret {
+    text-align: center;
+    padding: 4.4rem 1.6rem 4.4rem;
+    overflow: hidden;
+    background:
+      radial-gradient(70% 50% at 50% 50%, var(--emerald) 0%, var(--night) 100%);
+  }
+  .secret-bg {
+    position: absolute; left: 50%; top: 50%; z-index: -1;
+    transform: translate(-50%, -50%) rotate(-8deg);
+    font-family: var(--serif); font-weight: 700;
+    font-size: 8.5rem; line-height: .9; letter-spacing: .02em;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(207,169,94,.13);
+    white-space: nowrap;
+    pointer-events: none; user-select: none;
+  }
+  .secret .badge {
+    width: 4.2rem; height: 4.2rem; margin: 0 auto 1.6rem;
+    border-radius: 50%;
+    display: grid; place-items: center;
+    border: 1px solid rgba(207,169,94,.6);
+    color: var(--gold-light);
+    background: radial-gradient(circle, rgba(207,169,94,.18), rgba(207,169,94,0) 70%);
+  }
+  .secret .kicker { color: var(--gold); margin-bottom: 1.2rem; }
+  .secret .lead {
+    font-family: var(--serif); font-style: italic;
+    font-size: clamp(1.65rem, 7vw, 1.95rem); line-height: 1.25;
+    color: var(--cream);
+    max-width: 20rem; margin: 0 auto 1.1rem;
+  }
+  .surprise-word {
+    display: block;
+    font-style: normal; font-weight: 700;
+    font-size: clamp(2.8rem, 13vw, 3.5rem);
+    letter-spacing: .12em; text-indent: .12em;
+    margin-top: .3rem;
+    background: linear-gradient(175deg, #fbecc4, var(--gold) 55%, var(--gold-deep));
+    -webkit-background-clip: text; background-clip: text;
+    color: transparent;
+  }
+  .secret .body-text { max-width: 20.5rem; margin: 0 auto; }
+  .secret .shh {
+    display: inline-flex; align-items: center; gap: .6rem;
+    margin-top: 1.8rem;
+    padding: .6rem 1.2rem;
+    border: 1px solid rgba(207,169,94,.45); border-radius: 999px;
+    font-size: .66rem; font-weight: 600; letter-spacing: .24em; text-transform: uppercase;
+    color: var(--gold-light);
+  }
+  .secret .shh .icon { width: 1rem; height: 1rem; }
+
+  /* ---------- КҮНІ ---------- */
+  .when {
+    text-align: center;
+    padding: 4.2rem 1.2rem 4rem;
+  }
+  .when .kicker { color: var(--gold-deep); margin-bottom: 1rem; }
+  .when .date-big {
+    font-family: var(--serif); font-weight: 600;
+    font-size: clamp(3rem, 14vw, 3.7rem); line-height: 1;
+    color: var(--ink);
+  }
+  .when .date-big em { font-style: italic; font-weight: 500; color: var(--gold-deep); }
+  .when .date-year { font-size: .78rem; letter-spacing: .4em; text-indent: .4em; color: var(--ink-soft); margin-top: .6rem; }
+
+  .cal-card {
+    margin: 2rem .4rem 2rem;
+    padding: 1.4rem 1rem 1.3rem;
+    border-radius: 18px;
+    background: #fbf6ea;
+    border: 1px solid rgba(150,115,54,.25);
+    box-shadow: 0 14px 30px -18px rgba(29,58,50,.35);
+  }
+  .cal-month {
+    font-family: var(--serif); font-style: italic; font-size: 1.45rem;
+    color: var(--ink); margin-bottom: .9rem;
+  }
+  .calendar {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    row-gap: .4rem;
+  }
+  .calendar .dow {
+    font-size: .64rem; font-weight: 600; letter-spacing: .08em;
+    color: var(--gold-deep);
+    padding-bottom: .45rem;
+  }
+  .calendar .day {
+    position: relative;
+    font-size: .86rem;
+    color: var(--ink-soft);
+    height: 2.1rem;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .calendar .day.is-event { color: var(--night); font-weight: 600; }
+  .calendar .day .ring {
+    position: absolute; left: 50%; top: 50%;
+    width: 2.6rem; height: 2.6rem;
+    transform: translate(-50%, -50%);
+    pointer-events: none; overflow: visible;
+  }
+  .ring circle {
+    fill: rgba(207,169,94,.16);
+    stroke: var(--gold-deep); stroke-width: 2.2; stroke-linecap: round;
+    stroke-dasharray: 1; stroke-dashoffset: 1;
+    transform: rotate(-80deg); transform-origin: center;
+  }
+  .calendar.is-in .ring circle { animation: draw 1.5s cubic-bezier(.65,0,.35,1) forwards .4s; }
+  @keyframes draw { to { stroke-dashoffset: 0; } }
+
+  .time-row {
+    display: flex; align-items: center; justify-content: center; gap: 1.1rem;
+    margin-bottom: 2.2rem;
+  }
+  .time-row .icon { width: 1.7rem; height: 1.7rem; color: var(--gold-deep); }
+  .time-row .t {
+    font-family: var(--serif); font-weight: 600;
+    font-size: 3.1rem; line-height: 1; color: var(--ink);
+    font-variant-numeric: lining-nums;
+  }
+  .time-row .sep { width: 1px; height: 2.6rem; background: rgba(29,58,50,.25); }
+  .time-row .lbl { text-align: left; font-size: .7rem; letter-spacing: .18em; text-transform: uppercase; color: var(--ink-soft); line-height: 1.6; }
+
+  .on-time {
+    position: relative;
+    margin: 0 .4rem;
+    padding: 1.7rem 1.4rem 1.6rem;
+    border-radius: 18px;
+    background: var(--ink);
+    color: var(--cream);
+    text-align: center;
+  }
+  .on-time .kicker { color: var(--gold); margin-bottom: .9rem; }
+  .on-time p.main {
+    font-family: var(--serif); font-style: italic;
+    font-size: 1.4rem; line-height: 1.3;
+    margin-bottom: .8rem;
+  }
+  .on-time .body-text { color: rgba(245,238,223,.75); font-size: .86rem; }
+
+  /* ---------- МЕКЕНЖАЙ ---------- */
+  .where {
+    text-align: center;
+    padding: 4.4rem 1.6rem 4.4rem;
+    background: radial-gradient(90% 60% at 50% 100%, var(--emerald) 0%, var(--night) 75%);
+  }
+  .where .pin {
+    width: 3.6rem; height: 3.6rem; margin: 0 auto 1.3rem;
+    display: grid; place-items: center;
+    color: var(--gold-light);
+    border: 1px solid rgba(207,169,94,.5); border-radius: 50%;
+  }
+  .where .kicker { color: var(--gold); margin-bottom: 1rem; }
+  .venue {
+    font-family: var(--serif); font-weight: 600;
+    font-size: clamp(2.6rem, 12vw, 3.2rem); line-height: 1.02;
+    color: var(--cream);
+  }
+  .venue-type {
+    font-family: var(--serif); font-style: italic;
+    font-size: 1.35rem; color: var(--gold-light);
+    margin: .3rem 0 1.5rem;
+  }
+  .where .ornament { width: 3.8rem; color: var(--gold); margin: 0 auto 1.4rem; }
+  .where .addr { font-size: .9rem; line-height: 1.75; color: rgba(245,238,223,.8); margin-bottom: 2rem; }
+
+  .btn-map {
+    display: inline-flex; align-items: center; gap: .7rem;
+    font-family: var(--sans);
+    font-size: .74rem; font-weight: 600;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--night);
+    text-decoration: none;
+    background: linear-gradient(170deg, var(--gold-light), var(--gold) 60%, #b48f4b);
+    border-radius: 999px;
+    padding: .95rem 1.8rem;
+    box-shadow: 0 10px 26px -10px rgba(207,169,94,.6);
+    transition: transform .3s var(--ease), box-shadow .3s var(--ease);
+  }
+  .btn-map .icon { width: 1.05rem; height: 1.05rem; stroke-width: 2; }
+  .btn-map:hover { transform: translateY(-2px); box-shadow: 0 16px 30px -10px rgba(207,169,94,.75); }
+  .btn-map:focus-visible, .music:focus-visible, .seal-screen:focus-visible { outline: 2px solid var(--gold-light); outline-offset: 4px; }
+
+  /* ---------- КЕРІ САНАҚ ---------- */
+  .countdown-sec {
+    text-align: center;
+    padding: 4rem 1rem 3.6rem;
+  }
+  .countdown-sec .kicker { color: var(--gold-deep); margin-bottom: .8rem; }
+  .countdown-sec .serif-h { color: var(--ink); margin-bottom: 2rem; }
+  .countdown {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: .5rem;
+    max-width: 22rem; margin: 0 auto;
+  }
+  .cd-cell {
+    padding: .9rem 0 .75rem;
+    border-radius: 14px;
+    background: #fbf6ea;
+    border: 1px solid rgba(150,115,54,.22);
+  }
+  .cd-num {
+    font-family: var(--serif); font-weight: 600;
+    font-size: clamp(2.2rem, 10vw, 2.6rem);
+    color: var(--ink);
+    font-variant-numeric: tabular-nums lining-nums;
+    line-height: 1;
+    transition: opacity .25s ease, transform .25s ease;
+  }
+  .cd-num.tick { opacity: 0; transform: translateY(-6px); }
+  .cd-label {
+    font-size: .6rem; letter-spacing: .16em; text-transform: uppercase;
+    color: var(--gold-deep); margin-top: .45rem;
+  }
+  .cd-started {
+    display: none;
+    font-family: var(--serif); font-style: italic;
+    font-size: 2rem; color: var(--gold-deep);
+  }
+
+  /* ---------- ФИНАЛ ---------- */
+  .finale {
+    text-align: center;
+    padding: 4.6rem 1.8rem 3.4rem;
+    background:
+      radial-gradient(80% 50% at 50% 30%, rgba(207,169,94,.18), rgba(207,169,94,0) 70%),
+      var(--night);
+    overflow: hidden;
+  }
+  .finale .icon-lg { width: 2.6rem; height: 2.6rem; color: var(--gold); margin: 0 auto 1.4rem; display: block; }
+  .finale .body-text { max-width: 20rem; margin: 0 auto 2rem; font-size: .95rem; }
+  .finale .serif-h { color: var(--cream); margin-bottom: 2.4rem; }
+  .finale .serif-h em { color: var(--gold-light); }
+  .finale .ornament { width: 5rem; color: var(--gold); }
+  .finale .sign {
+    margin-top: 2.2rem;
+    font-size: .62rem; letter-spacing: .34em; text-indent: .34em; text-transform: uppercase;
+    color: rgba(245,238,223,.4);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+    .reveal, .hero .stage { opacity: 1; transform: none; }
+    .ring circle { stroke-dashoffset: 0; }
+  }
+</style>
+</head>
+<body class="locked">
+
+<!-- қошқар мүйіз ою-өрнегі — переиспользуемый символ -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="oyu" viewBox="0 0 120 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M60 50 C60 30 72 14 88 14 C103 14 111 27 105 38 C100 47 87 45 87 36 C87 30 94 29 96 33"/>
+    <path d="M60 50 C60 30 48 14 32 14 C17 14 9 27 15 38 C20 47 33 45 33 36 C33 30 26 29 24 33"/>
+    <path d="M60 50 C63 42 70 38 76 42 C80 45 78 50 74 49"/>
+    <path d="M60 50 C57 42 50 38 44 42 C40 45 42 50 46 49"/>
+    <path fill="currentColor" stroke="none" d="M60 53 L63.5 57.5 L60 62 L56.5 57.5 Z"/>
+    <path fill="currentColor" stroke="none" d="M60 2 L62.5 5.5 L60 9 L57.5 5.5 Z"/>
+  </symbol>
+</svg>
+
+<!-- ======== ПЕЧАТЬ: құпия шақыру ======== -->
+<button class="seal-screen" id="sealScreen" type="button" aria-label="Шақыруды ашу">
+  <span class="kicker">Құпия шақыру</span>
+  <span class="seal" aria-hidden="true">
+    <svg class="ornament top" viewBox="0 0 120 64"><use href="#oyu"/></svg>
+    <span class="seal-num">50</span>
+    <svg class="ornament" viewBox="0 0 120 64"><use href="#oyu"/></svg>
+  </span>
+  <span class="hint">Ашу үшін басыңыз</span>
+</button>
+
+<div class="page">
+
+  <!-- ======== HERO ======== -->
+  <header class="hero dark" id="hero">
+    <span class="music-label" aria-hidden="true">Әуен</span>
+    <button class="music" id="musicBtn" type="button" aria-label="Әуенді қосу / өшіру">
+      <img src="assets/vinyl.png" alt="">
+    </button>
+    <audio id="bgAudio" src="assets/music.mp3" preload="auto"></audio>
+
+    <p class="kicker stage" style="--d:0">Мерейтой</p>
+    <svg class="ornament stage" style="--d:1" viewBox="0 0 120 64" aria-hidden="true"><use href="#oyu"/></svg>
+    <h1 class="hero-name stage" style="--d:2">КЕНЖЕШ</h1>
+    <div class="fifty stage" style="--d:3" aria-label="50">
+      <span class="echo" aria-hidden="true">50</span>
+      <span class="fill">50</span>
+    </div>
+    <p class="hero-jas stage" style="--d:4">ЖАС</p>
+    <p class="hero-sub stage" style="--d:5">ерекше кешке шақырамыз</p>
+    <p class="hero-date stage" style="--d:6">10<i></i>10<i></i>2026</p>
+  </header>
+
+  <!-- ======== ШАҚЫРУ ======== -->
+  <section class="invite light">
+    <svg class="ornament reveal" viewBox="0 0 120 64" aria-hidden="true"><use href="#oyu"/></svg>
+    <h2 class="serif-h reveal">Құрметті қонақтар!</h2>
+    <p class="body-text reveal">Сіздерді</p>
+    <p class="name-line reveal">Кенжештің <em>50&nbsp;жас</em><br>мерейтойына</p>
+    <p class="body-text reveal">арналған ерекше кешке шақырамыз.</p>
+  </section>
+
+  <!-- ======== СЮРПРИЗ ======== -->
+  <section class="secret dark">
+    <span class="secret-bg" aria-hidden="true">ҚҰПИЯ</span>
+
+    <div class="badge reveal" aria-hidden="true">
+      <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="16" r="1"/><rect x="3" y="10" width="18" height="12" rx="2"/><path d="M7 10V7a5 5 0 0 1 10 0v3"/></svg>
+    </div>
+    <p class="kicker reveal">Бұл — құпия</p>
+    <p class="lead reveal">Бұл кеш Кенжеш үшін күтпеген <span class="surprise-word">СЮРПРИЗ</span> болмақ!</p>
+    <p class="body-text reveal">Сондықтан сіздерден кештің құпиясын сақтап, Кенжешке мерекелік кеш туралы ештеңе айтпауларыңызды сұраймыз.</p>
+    <p class="shh reveal">
+      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"/><path d="M6.61 6.61A13.53 13.53 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"/><path d="M9.88 9.88a3 3 0 1 0 4.24 4.24"/><path d="m2 2 20 20"/></svg>
+      Кенжешке айтпаңыз
+    </p>
+  </section>
+
+  <!-- ======== КҮНІ МЕН УАҚЫТЫ ======== -->
+  <section class="when light">
+    <p class="kicker reveal">Кеш салтанаты</p>
+    <p class="date-big reveal">10 <em>қазан</em></p>
+    <p class="date-year reveal">2026 · СЕНБІ</p>
+
+    <div class="cal-card reveal">
+      <p class="cal-month">Қазан</p>
+      <div class="calendar" id="calendar" role="img" aria-label="2026 жылғы 10 қазан, сенбі">
+        <span class="dow">ДС</span><span class="dow">СС</span><span class="dow">СР</span><span class="dow">БС</span><span class="dow">ЖМ</span><span class="dow">СБ</span><span class="dow">ЖС</span>
+      </div>
+    </div>
+
+    <div class="time-row reveal">
+      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      <span class="t">13:00</span>
+      <span class="sep" aria-hidden="true"></span>
+      <span class="lbl">Басталу<br>уақыты</span>
+    </div>
+
+    <div class="on-time reveal">
+      <p class="kicker">Ең маңыздысы</p>
+      <p class="main">Белгіленген уақытта кешікпей келулеріңізді өтінеміз.</p>
+      <p class="body-text">Тойдың сәтті болуы әрқайсыңыздың уақтылы келуіңізге байланысты.</p>
+    </div>
+  </section>
+
+  <!-- ======== МЕКЕНЖАЙ ======== -->
+  <section class="where dark">
+    <div class="pin reveal" aria-hidden="true">
+      <svg class="icon" viewBox="0 0 24 24"><path d="M20 10c0 4.99-5.54 10.19-7.4 11.8a1 1 0 0 1-1.2 0C9.54 20.19 4 14.99 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
+    </div>
+    <p class="kicker reveal">Мекенжай</p>
+    <h2 class="venue reveal">Шаңырақ</h2>
+    <p class="venue-type reveal">мейрамханасы</p>
+    <svg class="ornament reveal" viewBox="0 0 120 64" aria-hidden="true"><use href="#oyu"/></svg>
+    <p class="addr reveal">Астана қаласы,<br>Еренқабырға көшесі, 13</p>
+
+    <a class="btn-map reveal"
+       href="https://2gis.kz/astana/geo/9570784863323794/71.457423,51.147062"
+       target="_blank" rel="noopener">
+      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M14.1 6.1 9.9 3.9a2 2 0 0 0-1.8 0L3.6 6.2A1 1 0 0 0 3 7.1v12.3a1 1 0 0 0 1.4.9l3.7-1.9a2 2 0 0 1 1.8 0l4.2 2.2a2 2 0 0 0 1.8 0l4.5-2.3a1 1 0 0 0 .6-.9V5.1a1 1 0 0 0-1.4-.9l-3.7 1.9a2 2 0 0 1-1.8 0Z"/><path d="M15 6v15"/><path d="M9 3v15"/></svg>
+      Картадан көру
+    </a>
+  </section>
+
+  <!-- ======== КЕРІ САНАҚ ======== -->
+  <section class="countdown-sec light">
+    <p class="kicker reveal">Кері санақ</p>
+    <h2 class="serif-h reveal">Мерейтойға дейін</h2>
+
+    <div class="countdown reveal" id="countdown">
+      <div class="cd-cell"><div class="cd-num" id="cd-d">0</div><div class="cd-label">Күн</div></div>
+      <div class="cd-cell"><div class="cd-num" id="cd-h">00</div><div class="cd-label">Сағат</div></div>
+      <div class="cd-cell"><div class="cd-num" id="cd-m">00</div><div class="cd-label">Минут</div></div>
+      <div class="cd-cell"><div class="cd-num" id="cd-s">00</div><div class="cd-label">Секунд</div></div>
+    </div>
+    <p class="cd-started" id="cd-started">Мерейтой басталды!</p>
+  </section>
+
+  <!-- ======== ФИНАЛ ======== -->
+  <footer class="finale dark">
+    <svg class="icon icon-lg reveal" viewBox="0 0 24 24" aria-hidden="true"><path d="M5.8 11.3 2 22l10.7-3.79"/><path d="M4 3h.01"/><path d="M22 8h.01"/><path d="M15 2h.01"/><path d="M22 20h.01"/><path d="m22 2-2.24.75a2.9 2.9 0 0 0-1.96 3.12c.1.86-.57 1.63-1.45 1.63h-.38c-.86 0-1.6.6-1.76 1.44L14 10"/><path d="m22 13-.82-.33c-.86-.34-1.82.2-1.98 1.11-.11.7-.72 1.22-1.43 1.22H17"/><path d="m11 2 .33.82c.34.86-.2 1.82-1.11 1.98-.7.11-1.22.72-1.22 1.43V7"/><path d="M11 13c1.93 1.93 2.83 4.17 2 5-.83.83-3.07-.07-5-2-1.93-1.93-2.83-4.17-2-5 .83-.83 3.07.07 5 2Z"/></svg>
+    <p class="body-text reveal">Кенжештің 50 жылдық мерейтойын бірге ерекше естелікке айналдырайық!</p>
+    <h2 class="serif-h reveal">Кенжешті бірге <em>таңғалдырайық!</em></h2>
+    <svg class="ornament reveal" viewBox="0 0 120 64" aria-hidden="true"><use href="#oyu"/></svg>
+    <p class="sign reveal">10 · 10 · 2026 · Астана</p>
+  </footer>
+
+</div>
+
+<script>
+(function () {
+  'use strict';
+
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- музыка: старт с отметки, зацикливание на тот же момент ---------- */
+  var MUSIC_START = 125; // 2:05 — поменять под новый трек
+  var musicBtn = document.getElementById('musicBtn');
+  var audio = document.getElementById('bgAudio');
+  var startedOnce = false;
+
+  function startMusic() {
+    if (!startedOnce) {
+      try { audio.currentTime = MUSIC_START; } catch (e) {}
+      startedOnce = true;
+    }
+    return audio.play().then(function () { musicBtn.classList.add('playing'); });
+  }
+  audio.addEventListener('loadedmetadata', function () {
+    if (!startedOnce) { try { audio.currentTime = MUSIC_START; } catch (e) {} }
+  });
+  audio.addEventListener('ended', function () {
+    audio.currentTime = MUSIC_START;
+    audio.play().catch(function () {});
+  });
+  musicBtn.addEventListener('click', function () {
+    if (audio.paused) {
+      startMusic().catch(function () {});
+    } else {
+      audio.pause();
+      musicBtn.classList.remove('playing');
+    }
+  });
+
+  /* ---------- печать: тап открывает приглашение и даёт жест для автоплея ---------- */
+  var seal = document.getElementById('sealScreen');
+  seal.addEventListener('click', function () {
+    startMusic().catch(function () {});
+    seal.classList.add('open');
+    document.body.classList.remove('locked');
+    document.body.classList.add('opened');
+    window.scrollTo(0, 0);
+    setTimeout(function () { seal.remove(); }, 1400);
+  });
+
+  /* ---------- искры в hero ---------- */
+  if (!reduceMotion) {
+    var hero = document.getElementById('hero');
+    for (var k = 0; k < 18; k++) {
+      var s = document.createElement('span');
+      s.className = 'sparkle';
+      s.style.left = (Math.random() * 100).toFixed(1) + '%';
+      s.style.top = (Math.random() * 100).toFixed(1) + '%';
+      s.style.animationDelay = (Math.random() * 4).toFixed(2) + 's';
+      s.style.animationDuration = (3 + Math.random() * 3).toFixed(2) + 's';
+      hero.appendChild(s);
+    }
+  }
+
+  /* ---------- күнтізбе: қазан 2026 (1-і — бейсенбі, 10-ы — сенбі) ---------- */
+  var cal = document.getElementById('calendar');
+  var FIRST_WEEKDAY_OFFSET = 3; // ДС=0 … БС=3
+  var DAYS_IN_MONTH = 31;
+  var EVENT_DAY = 10;
+  var ringSVG =
+    '<svg class="ring" viewBox="0 0 40 40" aria-hidden="true">' +
+      '<circle pathLength="1" cx="20" cy="20" r="17"/>' +
+    '</svg>';
+
+  for (var i = 0; i < 35; i++) {
+    var cell = document.createElement('span');
+    cell.className = 'day';
+    var day = i - FIRST_WEEKDAY_OFFSET + 1;
+    if (day >= 1 && day <= DAYS_IN_MONTH) {
+      cell.textContent = day;
+      if (day === EVENT_DAY) {
+        cell.classList.add('is-event');
+        cell.insertAdjacentHTML('afterbegin', ringSVG);
+      }
+    }
+    cal.appendChild(cell);
+  }
+
+  /* ---------- scroll-reveal ---------- */
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) {
+        e.target.classList.add('is-in');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.2, rootMargin: '0px 0px -6% 0px' });
+  document.querySelectorAll('.reveal, .calendar').forEach(function (el) { io.observe(el); });
+
+  /* ---------- кері санақ: 10.10.2026 13:00 (Астана, UTC+5) ---------- */
+  var TARGET = new Date('2026-10-10T13:00:00+05:00').getTime();
+  var els = {
+    d: document.getElementById('cd-d'),
+    h: document.getElementById('cd-h'),
+    m: document.getElementById('cd-m'),
+    s: document.getElementById('cd-s')
+  };
+  var prev = {};
+
+  function pad(n) { return n < 10 ? '0' + n : String(n); }
+
+  function setNum(key, value) {
+    if (prev[key] === value) return;
+    prev[key] = value;
+    var el = els[key];
+    if (reduceMotion) { el.textContent = value; return; }
+    el.classList.add('tick');
+    setTimeout(function () {
+      el.textContent = value;
+      el.classList.remove('tick');
+    }, 240);
+  }
+
+  var timer;
+  function tick() {
+    var diff = TARGET - Date.now();
+    if (diff <= 0) {
+      document.getElementById('countdown').style.display = 'none';
+      document.getElementById('cd-started').style.display = 'block';
+      clearInterval(timer);
+      return;
+    }
+    setNum('d', String(Math.floor(diff / 86400000)));
+    setNum('h', pad(Math.floor(diff / 3600000) % 24));
+    setNum('m', pad(Math.floor(diff / 60000) % 60));
+    setNum('s', pad(Math.floor(diff / 1000) % 60));
+  }
+  tick();
+  timer = setInterval(tick, 1000);
+})();
+</script>
+</body>
+</html>
