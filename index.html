@@ -458,13 +458,124 @@
   .btn-map:hover { transform: translateY(-2px); box-shadow: 0 16px 30px -10px rgba(207,169,94,.75); }
   .btn-map:focus-visible, .music:focus-visible, .seal-screen:focus-visible { outline: 2px solid var(--gold-light); outline-offset: 4px; }
 
+  /* ---------- RSVP ---------- */
+  .rsvp {
+    text-align: center;
+    padding: 4.2rem 1.4rem 4.2rem;
+  }
+  .rsvp .kicker { color: var(--gold-deep); margin-bottom: 1rem; }
+  .rsvp .serif-h { color: var(--ink); margin-bottom: .9rem; }
+  .rsvp .body-text { max-width: 20rem; margin: 0 auto 2rem; }
+
+  .rsvp-card {
+    text-align: left;
+    padding: 1.6rem 1.2rem 1.4rem;
+    border-radius: 18px;
+    background: #fbf6ea;
+    border: 1px solid rgba(150,115,54,.25);
+    box-shadow: 0 14px 30px -18px rgba(29,58,50,.35);
+  }
+  .field-label {
+    display: block;
+    font-size: .66rem; font-weight: 600; letter-spacing: .22em; text-transform: uppercase;
+    color: var(--gold-deep);
+    margin-bottom: .55rem;
+  }
+  .rsvp input[type="text"] {
+    width: 100%;
+    font-family: var(--sans); font-size: 1rem;
+    color: var(--ink);
+    background: var(--cream);
+    border: 1px solid rgba(29,58,50,.18);
+    border-radius: 12px;
+    padding: .85rem 1rem;
+    outline: none;
+    transition: border-color .25s ease, box-shadow .25s ease;
+  }
+  .rsvp input[type="text"]::placeholder { color: rgba(79,99,92,.55); }
+  .rsvp input[type="text"]:focus { border-color: var(--gold-deep); box-shadow: 0 0 0 3px rgba(207,169,94,.25); }
+  .rsvp input[type="text"].invalid { border-color: #b4553f; box-shadow: 0 0 0 3px rgba(180,85,63,.18); }
+  .field-error {
+    display: none;
+    font-size: .74rem; color: #a44a35;
+    margin-top: .45rem;
+  }
+  .field-error.show { display: block; }
+
+  .opts { border: none; margin-top: 1.4rem; }
+  .opts legend { margin-bottom: .55rem; }
+  .opt {
+    display: flex; align-items: center; gap: .85rem;
+    padding: .85rem 1rem;
+    margin-bottom: .5rem;
+    border-radius: 12px;
+    border: 1px solid rgba(29,58,50,.14);
+    background: var(--cream);
+    font-size: .93rem; color: var(--ink);
+    cursor: pointer;
+    transition: background .25s ease, border-color .25s ease;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .opt input { position: absolute; opacity: 0; pointer-events: none; }
+  .opt .dot {
+    flex: none;
+    width: 1.15rem; height: 1.15rem; border-radius: 50%;
+    border: 1.5px solid rgba(29,58,50,.35);
+    display: grid; place-items: center;
+    transition: border-color .25s ease;
+  }
+  .opt .dot::after {
+    content: ''; width: .55rem; height: .55rem; border-radius: 50%;
+    background: var(--gold-deep);
+    transform: scale(0); transition: transform .25s var(--ease);
+  }
+  .opt:has(input:checked) { background: rgba(207,169,94,.16); border-color: rgba(150,115,54,.55); }
+  .opt:has(input:checked) .dot { border-color: var(--gold-deep); }
+  .opt:has(input:checked) .dot::after { transform: scale(1); }
+  .opt:has(input:focus-visible) { outline: 2px solid var(--gold-deep); outline-offset: 2px; }
+
+  .btn-send {
+    width: 100%;
+    display: flex; align-items: center; justify-content: center; gap: .65rem;
+    margin-top: 1rem;
+    border: none; cursor: pointer;
+    font-family: var(--sans); font-size: .76rem; font-weight: 600;
+    letter-spacing: .2em; text-transform: uppercase;
+    color: var(--cream);
+    background: var(--ink);
+    border-radius: 999px;
+    padding: 1rem 1.4rem;
+    box-shadow: 0 12px 26px -14px rgba(13,33,28,.7);
+    transition: transform .3s var(--ease), background .3s ease;
+  }
+  .btn-send .icon { width: 1.05rem; height: 1.05rem; stroke-width: 2; color: var(--gold-light); }
+  .btn-send:hover { transform: translateY(-2px); background: var(--night); }
+  .btn-send:focus-visible { outline: 2px solid var(--gold-deep); outline-offset: 3px; }
+
+  .rsvp-done { display: none; text-align: center; padding: .6rem 0 .2rem; }
+  .rsvp-done.show { display: block; }
+  .rsvp-done .check {
+    width: 3.4rem; height: 3.4rem; margin: 0 auto 1rem;
+    border-radius: 50%; display: grid; place-items: center;
+    color: var(--gold-deep); border: 1px solid rgba(150,115,54,.5);
+  }
+  .rsvp-done .serif-h { font-size: 2rem; margin-bottom: .6rem; }
+  .rsvp-done .body-text { margin: 0 auto 1.1rem; font-size: .86rem; }
+  .link-btn {
+    background: none; border: none; cursor: pointer;
+    font-family: var(--sans); font-size: .7rem; font-weight: 600;
+    letter-spacing: .16em; text-transform: uppercase;
+    color: var(--gold-deep);
+    text-decoration: underline; text-underline-offset: 4px;
+  }
+
   /* ---------- КЕРІ САНАҚ ---------- */
   .countdown-sec {
     text-align: center;
-    padding: 4rem 1rem 3.6rem;
+    padding: 4.2rem 1rem 1rem;
   }
-  .countdown-sec .kicker { color: var(--gold-deep); margin-bottom: .8rem; }
-  .countdown-sec .serif-h { color: var(--ink); margin-bottom: 2rem; }
+  .countdown-sec .kicker { color: var(--gold); margin-bottom: .8rem; }
+  .countdown-sec .serif-h { color: var(--cream); margin-bottom: 2rem; }
   .countdown {
     display: grid; grid-template-columns: repeat(4, 1fr);
     gap: .5rem;
@@ -473,13 +584,13 @@
   .cd-cell {
     padding: .9rem 0 .75rem;
     border-radius: 14px;
-    background: #fbf6ea;
-    border: 1px solid rgba(150,115,54,.22);
+    background: rgba(207,169,94,.07);
+    border: 1px solid rgba(207,169,94,.3);
   }
   .cd-num {
     font-family: var(--serif); font-weight: 600;
     font-size: clamp(2.2rem, 10vw, 2.6rem);
-    color: var(--ink);
+    color: var(--gold-light);
     font-variant-numeric: tabular-nums lining-nums;
     line-height: 1;
     transition: opacity .25s ease, transform .25s ease;
@@ -487,20 +598,20 @@
   .cd-num.tick { opacity: 0; transform: translateY(-6px); }
   .cd-label {
     font-size: .6rem; letter-spacing: .16em; text-transform: uppercase;
-    color: var(--gold-deep); margin-top: .45rem;
+    color: rgba(245,238,223,.6); margin-top: .45rem;
   }
   .cd-started {
     display: none;
     font-family: var(--serif); font-style: italic;
-    font-size: 2rem; color: var(--gold-deep);
+    font-size: 2rem; color: var(--gold-light);
   }
 
   /* ---------- ФИНАЛ ---------- */
   .finale {
     text-align: center;
-    padding: 4.6rem 1.8rem 3.4rem;
+    padding: 3.6rem 1.8rem 3.4rem;
     background:
-      radial-gradient(80% 50% at 50% 30%, rgba(207,169,94,.18), rgba(207,169,94,0) 70%),
+      radial-gradient(80% 50% at 50% 40%, rgba(207,169,94,.16), rgba(207,169,94,0) 70%),
       var(--night);
     overflow: hidden;
   }
@@ -640,8 +751,45 @@
     </a>
   </section>
 
+  <!-- ======== RSVP ======== -->
+  <section class="rsvp light" id="rsvp">
+    <p class="kicker reveal">Жауап беру</p>
+    <h2 class="serif-h reveal">Келесіз бе?</h2>
+    <p class="body-text reveal">Мерейтойға қатысуыңызды растауыңызды сұраймыз.</p>
+
+    <div class="rsvp-card reveal">
+      <form id="rsvpForm" novalidate>
+        <label class="field-label" for="rsvpName">Есіміңіз</label>
+        <input type="text" id="rsvpName" name="name" autocomplete="name" placeholder="Аты-жөніңіз" maxlength="80">
+        <p class="field-error" id="nameError">Есіміңізді жазыңыз</p>
+
+        <fieldset class="opts">
+          <legend class="field-label">Қатысуыңыз</legend>
+          <label class="opt"><input type="radio" name="attend" value="Өзім келемін"><span class="dot" aria-hidden="true"></span>Өзім келемін</label>
+          <label class="opt"><input type="radio" name="attend" value="Жұбайыммен келемін"><span class="dot" aria-hidden="true"></span>Жұбайыммен келемін</label>
+          <label class="opt"><input type="radio" name="attend" value="Келе алмаймын"><span class="dot" aria-hidden="true"></span>Келе алмаймын</label>
+          <p class="field-error" id="attendError">Жауаптың бірін таңдаңыз</p>
+        </fieldset>
+
+        <button class="btn-send" type="submit">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M14.54 21.69a.5.5 0 0 0 .94-.03l6.5-19a.5.5 0 0 0-.64-.64l-19 6.5a.5.5 0 0 0-.03.94l7.93 3.18a2 2 0 0 1 1.11 1.11z"/><path d="m21.85 2.15-10.94 10.94"/></svg>
+          Жіберу
+        </button>
+      </form>
+
+      <div class="rsvp-done" id="rsvpDone" aria-live="polite">
+        <div class="check" aria-hidden="true">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>
+        </div>
+        <p class="serif-h">Рақмет!</p>
+        <p class="body-text">Жауабыңыз WhatsApp-та дайын. Хабарламаны жіберуді ұмытпаңыз.</p>
+        <button class="link-btn" type="button" id="rsvpAgain">Жауапты өзгерту</button>
+      </div>
+    </div>
+  </section>
+
   <!-- ======== КЕРІ САНАҚ ======== -->
-  <section class="countdown-sec light">
+  <section class="countdown-sec dark">
     <p class="kicker reveal">Кері санақ</p>
     <h2 class="serif-h reveal">Мерейтойға дейін</h2>
 
@@ -759,6 +907,52 @@
     });
   }, { threshold: 0.2, rootMargin: '0px 0px -6% 0px' });
   document.querySelectorAll('.reveal, .calendar').forEach(function (el) { io.observe(el); });
+
+  /* ---------- RSVP: ответ уходит текстом в WhatsApp ---------- */
+  // Номер организатора в международном формате, без «+».
+  var RSVP_WHATSAPP_PHONE = '77761618998';
+  var form = document.getElementById('rsvpForm');
+  var nameInput = document.getElementById('rsvpName');
+  var nameError = document.getElementById('nameError');
+  var attendError = document.getElementById('attendError');
+  var rsvpDone = document.getElementById('rsvpDone');
+
+  nameInput.addEventListener('input', function () {
+    nameInput.classList.remove('invalid');
+    nameError.classList.remove('show');
+  });
+  form.querySelectorAll('input[name="attend"]').forEach(function (r) {
+    r.addEventListener('change', function () { attendError.classList.remove('show'); });
+  });
+
+  form.addEventListener('submit', function (ev) {
+    ev.preventDefault();
+    var name = nameInput.value.trim();
+    var checked = form.querySelector('input[name="attend"]:checked');
+    if (!name) {
+      nameInput.classList.add('invalid');
+      nameError.classList.add('show');
+      nameInput.focus();
+    }
+    if (!checked) attendError.classList.add('show');
+    if (!name || !checked) return;
+
+    var msg =
+      'Сәлеметсіз бе! Кенжештің 50 жас мерейтойына жауап:\n\n' +
+      'Есімі: ' + name + '\n' +
+      'Жауабы: ' + checked.value;
+    var url = 'https://wa.me/' + RSVP_WHATSAPP_PHONE + '?text=' + encodeURIComponent(msg);
+    var win = window.open(url, '_blank');
+    if (!win) window.location.href = url; // попап заблокирован — открываем в той же вкладке
+
+    form.style.display = 'none';
+    rsvpDone.classList.add('show');
+  });
+
+  document.getElementById('rsvpAgain').addEventListener('click', function () {
+    rsvpDone.classList.remove('show');
+    form.style.display = '';
+  });
 
   /* ---------- кері санақ: 10.10.2026 13:00 (Астана, UTC+5) ---------- */
   var TARGET = new Date('2026-10-10T13:00:00+05:00').getTime();

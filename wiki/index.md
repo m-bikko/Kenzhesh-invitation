@@ -2,6 +2,7 @@
 
 ## Entities
 - [[invite-page]] — структура страницы и поведение секций
+- [[rsvp-whatsapp]] — опрос гостей с отправкой ответа в WhatsApp
 
 ## Concepts
 - [[design-system]] — палитра, шрифты, орнамент, анимации
