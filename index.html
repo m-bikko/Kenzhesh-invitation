@@ -819,8 +819,9 @@
 
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* ---------- музыка: старт с отметки, зацикливание на тот же момент ---------- */
-  var MUSIC_START = 125; // 2:05 — поменять под новый трек
+  /* ---------- музыка: Қайрат Нұртас — «Туған күн» (минус), по кругу ---------- */
+  var MUSIC_START = 0;
+  var MUSIC_LOOP_AT = 237.5; // в конце трека ~3.5 с тишины — зацикливаем раньше
   var musicBtn = document.getElementById('musicBtn');
   var audio = document.getElementById('bgAudio');
   var startedOnce = false;
@@ -834,6 +835,9 @@
   }
   audio.addEventListener('loadedmetadata', function () {
     if (!startedOnce) { try { audio.currentTime = MUSIC_START; } catch (e) {} }
+  });
+  audio.addEventListener('timeupdate', function () {
+    if (audio.currentTime >= MUSIC_LOOP_AT) audio.currentTime = MUSIC_START;
   });
   audio.addEventListener('ended', function () {
     audio.currentTime = MUSIC_START;
